@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  mtproto-proxy:
+    image: telegrammessenger/proxy:latest
+    container_name: mtproto-proxy
+    restart: always
+    ports:
+      - "${PROXY_PORT}:${PROXY_PORT}"
+    environment:
+      - SECRET=${SECRET}
+      - TAG=${TAG}
+      - WORKERS=${WORKERS}
+    command: >
+      -u nobody
+      -p 8888
+      -H ${PROXY_PORT}
+      -S ${SECRET}
+      --aes-pwd /data/proxy-secret
+      /data/proxy-multi.conf
+      -M ${WORKERS}
+    volumes:
+      - ./proxy-config:/data
