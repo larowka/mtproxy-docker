@@ -11,13 +11,5 @@ services:
       - SECRET=${SECRET}
       - TAG=${TAG}
       - WORKERS=${WORKERS}
-    command: >
-      -u nobody
-      -p 8888
-      -H ${PROXY_PORT}
-      -S ${SECRET}
-      --aes-pwd /data/proxy-secret
-      /data/proxy-multi.conf
-      -M ${WORKERS}
     volumes:
       - ./proxy-config:/data
