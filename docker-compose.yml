@@ -4,7 +4,7 @@ services:
     container_name: mtproto-proxy
     restart: always
     ports:
-      - "${PROXY_PORT}:${PROXY_PORT}"
+      - "${PROXY_PORT}:443"
     environment:
       - SECRET=${SECRET}
       - TAG=${TAG}
